@@ -144,7 +144,14 @@ app_license = "mit"
 # 		"on_trash": "method"
 # 	}
 # }
-
+doc_events = {
+    "Patient": {
+        "after_insert": "health_sil.services.address_api.create_address_from_patient"
+    },
+    "Item": {
+        "after_insert": "health_sil.services.batch_api.create_batch_from_item"
+    }
+}
 # Scheduled Tasks
 # ---------------
 
@@ -242,3 +249,35 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    "Client Script",
+    "Server Script",
+    "Custom Field",
+    "Property Setter",
+    "Print Format",
+    # "DocType",
+    "Report",
+    # "Letter Head",
+    # "Workflow",
+    # "Workflow State",
+    # "Workflow Action",
+    # "Workflow Action Master",
+    # Additional fields
+    # {"dt": "Custom DocPerm"},
+    # {"dt": "Role"},
+    # {"dt": "Custom Role"},
+    {"dt": "Module Def"},
+    # {"dt": "Translation"},
+    # {"dt": "Portal Menu Item"},
+    # {"dt": "Web Page"},
+    {"dt": "Web Form"},
+    # {"dt": "Notification"},
+    # {"dt": "Email Alert"},
+    # {"dt": "Email Template"},
+    #{"dt": "Dashboard"},
+    #  {"dt": "Dashboard",
+    #     "filters": [["is_standard", "=", "0"]],
+    #     "ignore_version": 1},
+    {"dt": "Dashboard Chart"},
+    # {"dt": "User Permission"}
+]
