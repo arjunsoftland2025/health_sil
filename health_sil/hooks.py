@@ -146,12 +146,15 @@ app_license = "mit"
 # }
 doc_events = {
     "Patient": {
-        "after_insert": "health_sil.services.address_api.create_address_from_patient"
+        "after_insert": "health_sil.services.address_api.create_address_from_patient",
+        "before_insert": "health_sil.services.naming.before_insert",  # Path to the method
     },
     "Item": {
         "after_insert": "health_sil.services.batch_api.create_batch_from_item"
     }
 }
+
+
 # Scheduled Tasks
 # ---------------
 
