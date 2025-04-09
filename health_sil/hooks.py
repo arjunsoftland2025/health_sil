@@ -278,6 +278,6 @@ fixtures = [
     #  {"dt": "Dashboard",
     #     "filters": [["is_standard", "=", "0"]],
     #     "ignore_version": 1},
-    {"dt": "Dashboard Chart"},
+    # {"dt": "Dashboard Chart"},
     # {"dt": "User Permission"}
 ]
