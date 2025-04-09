@@ -255,7 +255,11 @@ doc_events = {
 fixtures = [
     "Client Script",
     "Server Script",
-    "Custom Field",
+    # "Custom Field",
+    {
+        "dt": "Custom Field",
+        "filters": [["module", "=", "Health Sil"]]
+    },
     "Property Setter",
     "Print Format",
     # "DocType",

@@ -112,7 +112,7 @@ def update_patient_registration_details(patient):
         
     if patient_doc.custom_consultation_valid_date != renewal_date:
         current_date_obj = datetime.strptime(renewal_date, '%Y-%m-%d')
-        patient_doc.custom_consultation_valid_date = current_date_obj + timedelta(days=6)
+        patient_doc.custom_consultation_valid_date = current_date_obj + timedelta(days=int(patient_doc.custom_free_consultation_period_))
         changed = True
 
     if changed:
