@@ -94,6 +94,7 @@ def create_and_submit_invoice(patient, patient_name, customer, doctor, items):
     invoice.submit()
     frappe.msgprint(_("Invoice {0} created").format(invoice.name), alert=True)
     return invoice
+
 def update_patient_registration_details(patient):
     """Update patient's registration status and consultation renewal date"""
     patient_doc = frappe.get_doc("Patient", patient)
@@ -184,6 +185,7 @@ def get_payment_account(mode, company):
     return frappe.get_cached_value("Mode of Payment Account", 
         {"parent": mode, "company": company}, "default_account")
 
+@frappe.whitelist()
 def create_patient_encounter(patient, doctor, company, encounter_token):
     """Optimized patient encounter creation"""
     if not doctor:  # Skip if no doctor specified
@@ -200,7 +202,7 @@ def create_patient_encounter(patient, doctor, company, encounter_token):
     })
     
     encounter.insert(ignore_permissions=True)
-    encounter.submit()
+    # encounter.submit()
     return encounter.name
 
 def build_response(invoice, encounter):
