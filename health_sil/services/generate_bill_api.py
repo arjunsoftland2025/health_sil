@@ -98,6 +98,7 @@ def create_and_submit_invoice(patient, patient_name, customer, doctor, items):
 def update_patient_registration_details(patient):
     """Update patient's registration status and consultation renewal date"""
     patient_doc = frappe.get_doc("Patient", patient)
+    patient_doc.reload()
     changed = False
 
     # Update registration status if not already registered
@@ -105,16 +106,16 @@ def update_patient_registration_details(patient):
         patient_doc.custom_is_registered = 1
         changed = True
 
-    # Always update renewal date to current date
-    renewal_date = nowdate()
-    if patient_doc.custom_consultation_renewal_date != renewal_date:
-        patient_doc.custom_consultation_renewal_date = renewal_date
-        changed = True
+    # # Always update renewal date to current date
+    # renewal_date = nowdate()
+    # if patient_doc.custom_consultation_renewal_date != renewal_date:
+    #     patient_doc.custom_consultation_renewal_date = renewal_date
+    #     changed = True
         
-    if patient_doc.custom_consultation_valid_date != renewal_date:
-        current_date_obj = datetime.strptime(renewal_date, '%Y-%m-%d')
-        patient_doc.custom_consultation_valid_date = current_date_obj + timedelta(days=int(patient_doc.custom_free_consultation_period_))
-        changed = True
+    # if patient_doc.custom_consultation_valid_date != renewal_date:
+    #     current_date_obj = datetime.strptime(renewal_date, '%Y-%m-%d')
+    #     patient_doc.custom_consultation_valid_date = current_date_obj + timedelta(days=int(patient_doc.custom_free_consultation_period_))
+    #     changed = True
 
     if changed:
         patient_doc.save(ignore_permissions=True)

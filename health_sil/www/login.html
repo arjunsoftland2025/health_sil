@@ -309,10 +309,11 @@
                     
                     // Add error styling to inputs
                     $('#login_email, #login_password').addClass('is-invalid');
+                    btn.prop('disabled', false).text('Login');
                 },
                 complete: function() {
                     // Reset button state
-                    btn.prop('disabled', false).text('Login');
+                    // btn.prop('disabled', false).text('Login');
                     $('#login_email, #login_password').removeClass('is-invalid');
                 }
             });

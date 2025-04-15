@@ -32,6 +32,7 @@
    "options": "Item"
   },
   {
+   "default": "1.00",
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -79,7 +80,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-04-09 09:28:42.598302",
+ "modified": "2025-04-11 17:55:38.394923",
  "modified_by": "Administrator",
  "module": "Health Sil",
  "name": "Lab Items",
