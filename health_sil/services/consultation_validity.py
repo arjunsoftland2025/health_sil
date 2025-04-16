@@ -11,6 +11,7 @@ def update_consultation_validity(patient, doctor):
     try:
         # Get patient details
         patient_doc = frappe.get_doc("Patient", patient)
+        patient_doc.reload()
         free_consultation_period = patient_doc.custom_free_consultation_period_ or 30
         
         # Today's date
@@ -64,3 +65,8 @@ def update_consultation_validity(patient, doctor):
             'success': False,
             'error': str(e)
         }
+
+
+
+ 
+    
