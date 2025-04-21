@@ -150,7 +150,10 @@ doc_events = {
         "before_insert": "health_sil.services.naming.before_insert",  # Path to the method
     },
     "Item": {
-        "after_insert": "health_sil.services.batch_api.create_batch_from_item"
+        "after_insert": [
+            "health_sil.services.batch_api.create_batch_from_item",
+            "health_sil.services.price_list_api.add_price_list_from_item",
+        ]
     }
 }
 
