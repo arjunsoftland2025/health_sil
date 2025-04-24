@@ -92,7 +92,7 @@ def create_and_submit_invoice(patient, patient_name, customer, doctor, items):
     
     invoice.insert(ignore_permissions=True)
     invoice.submit()
-    frappe.msgprint(_("Invoice {0} created").format(invoice.name), alert=True)
+    # frappe.msgprint(_("Invoice {0} created").format(invoice.name), alert=True)
     return invoice
 
 def update_patient_registration_details(patient):
@@ -119,7 +119,7 @@ def update_patient_registration_details(patient):
 
     if changed:
         patient_doc.save(ignore_permissions=True)
-        frappe.msgprint(_("Patient registration details updated"), alert=True)
+        # frappe.msgprint(_("Patient registration details updated"), alert=True)
 
 def validate_and_prepare_item(item):
     """Validate individual item and prepare for insertion"""
@@ -178,7 +178,7 @@ def create_payment_entry(invoice, mode_of_payment):
     
     pe.insert(ignore_permissions=True)
     pe.submit()
-    frappe.msgprint(_("Payment {0} created").format(pe.name), alert=True)
+    # frappe.msgprint(_("Payment {0} created").format(pe.name), alert=True)
     return pe
 
 def get_payment_account(mode, company):
@@ -221,10 +221,10 @@ def log_and_notify_payment_error(invoice_name, error):
         title=_("Payment Processing Failed"),
         message=f"Invoice: {invoice_name}\nError: {str(error)}"
     )
-    frappe.msgprint(
-        _("Payment failed for Invoice {0}. See logs for details.").format(invoice_name),
-        alert=True
-    )
+    # frappe.msgprint(
+    #     _("Payment failed for Invoice {0}. See logs for details.").format(invoice_name),
+    #     alert=True
+    # )
 
 def handle_errors(error):
     """Global error handler"""
