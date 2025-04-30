@@ -38,6 +38,7 @@ def get_validated_customer(patient_name):
 
 def create_and_submit_invoice(customer, patient, patient_name, doctor, items, price_list):
     """Create and submit Sales Invoice with optimized validations"""
+    a = 1
     items = json.loads(items)
     invoice = frappe.new_doc("Sales Invoice")
     invoice.update({
@@ -47,6 +48,7 @@ def create_and_submit_invoice(customer, patient, patient_name, doctor, items, pr
         "ref_practitioner": doctor,
         "selling_price_list": price_list,
         "due_date": nowdate(),
+        "update_stock": a,
         "items": [validate_and_prepare_item(row) for row in items]
     })
     

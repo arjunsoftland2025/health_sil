@@ -1,43 +1,5 @@
 [
  {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": "",
-  "modified": "2018-02-13 04:47:04.158213",
-  "module": "Manufacturing",
-  "name": "Work Order Stock Report",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Work Order",
-  "reference_report": null,
-  "report_name": "Work Order Stock Report",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Work Order Stock Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Work Order Stock Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   }
-  ],
-  "timeout": 0
- },
- {
   "add_total_row": 1,
   "add_translate_data": 0,
   "columns": [],
@@ -185,6 +147,660 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2022-03-01 15:46:30.974086",
+  "module": "GST India",
+  "name": "GSTR-1",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "GL Entry",
+  "reference_report": null,
+  "report_name": "GSTR-1",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GSTR-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GSTR-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GSTR-1",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-05-08 18:32:52.251457",
+  "module": "GST India",
+  "name": "HSN-wise-summary of outward supplies",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "HSN-wise-summary of outward supplies",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "HSN-wise-summary of outward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "HSN-wise-summary of outward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "HSN-wise-summary of outward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "",
+  "modified": "2022-03-01 15:49:13.912294",
+  "module": "GST India",
+  "name": "e-Invoice Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "e-Invoice Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "e-Invoice Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "e-Invoice Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-05-08 12:24:58.886166",
+  "module": "GST India",
+  "name": "Bill of Entry Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Bill of Entry",
+  "reference_report": null,
+  "report_name": "Bill of Entry Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Bill of Entry Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-06-05 14:48:26.693826",
+  "module": "GST India",
+  "name": "GST Balance",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "GL Entry",
+  "reference_report": null,
+  "report_name": "GST Balance",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Balance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-07-25 16:35:23.470355",
+  "module": "Audit Trail",
+  "name": "Audit Trail",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Version",
+  "reference_report": null,
+  "report_name": "Audit Trail",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Audit Trail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Audit Trail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Administrator"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "SMC - New",
+  "modified": "2023-07-17 17:06:02.333972",
+  "module": "GST India",
+  "name": "GSTR-3B Details",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "GSTR-3B Details",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GSTR-3B Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GSTR-3B Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GSTR-3B Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2023-09-17 16:44:32.575646",
+  "module": "GST India",
+  "name": "GST Advance Detail",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Payment Entry",
+  "reference_report": null,
+  "report_name": "GST Advance Detail",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Advance Detail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Advance Detail",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-03-11 16:03:18.740603",
+  "module": "GST India",
+  "name": "GST Sales Register Beta",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "GST Sales Register Beta",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Sales Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Sales Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-08-19 14:40:33.093455",
+  "module": "GST India",
+  "name": "GST Job Work Stock Movement",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Subcontracting Order",
+  "reference_report": null,
+  "report_name": "GST Job Work Stock Movement",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "GST Job Work Stock Movement",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-08-26 20:42:05.592632",
+  "module": "GST India",
+  "name": "GST Purchase Register Beta",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "GST Purchase Register Beta",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Purchase Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "GST Purchase Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Purchase Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   },
+   {
+    "parent": "GST Purchase Register Beta",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2025-01-29 13:02:30.885362",
+  "module": "GST India",
+  "name": "GSTIN Status",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "GSTIN",
+  "reference_report": null,
+  "report_name": "GSTIN Status",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GSTIN Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "GSTIN Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GSTIN Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 1500
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2025-02-11 12:17:30.611180",
+  "module": "GST India",
+  "name": "India Compliance API Usage",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Integration Request",
+  "reference_report": null,
+  "report_name": "India Compliance API Usage",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "India Compliance API Usage",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2025-04-03 12:09:20.116328",
+  "module": "GST India",
+  "name": "GST Tax Rate-wise Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "GST Tax Rate-wise Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "GST Tax Rate-wise Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "GST Tax Rate-wise Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "GST Tax Rate-wise Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2018-02-13 04:47:04.158213",
+  "module": "Manufacturing",
+  "name": "Work Order Stock Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Work Order",
+  "reference_report": null,
+  "report_name": "Work Order Stock Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Work Order Stock Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Work Order Stock Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
    }
   ],
   "timeout": 0
@@ -437,50 +1053,6 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2022-03-01 15:46:30.974086",
-  "module": "GST India",
-  "name": "GSTR-1",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "GL Entry",
-  "reference_report": null,
-  "report_name": "GSTR-1",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GSTR-1",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "GSTR-1",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "GSTR-1",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Auditor"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
   "modified": "2018-02-12 17:45:04.627654",
   "module": "Stock",
   "name": "Warehouse wise Item Balance Age and Value",
@@ -597,50 +1169,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "System Manager"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-05-08 18:32:52.251457",
-  "module": "GST India",
-  "name": "HSN-wise-summary of outward supplies",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Sales Invoice",
-  "reference_report": null,
-  "report_name": "HSN-wise-summary of outward supplies",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "HSN-wise-summary of outward supplies",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "HSN-wise-summary of outward supplies",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "HSN-wise-summary of outward supplies",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Auditor"
    }
   ],
   "timeout": 0
@@ -2177,44 +2705,6 @@
   "filters": [],
   "is_standard": "Yes",
   "javascript": null,
-  "json": "{}",
-  "letter_head": "",
-  "modified": "2022-03-01 15:49:13.912294",
-  "module": "GST India",
-  "name": "e-Invoice Summary",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Sales Invoice",
-  "reference_report": null,
-  "report_name": "e-Invoice Summary",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "e-Invoice Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "e-Invoice Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
   "json": null,
   "letter_head": null,
   "modified": "2021-03-31 08:48:30.944429",
@@ -3139,100 +3629,6 @@
   "filters": [],
   "is_standard": "Yes",
   "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-05-08 12:24:58.886166",
-  "module": "GST India",
-  "name": "Bill of Entry Summary",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Bill of Entry",
-  "reference_report": null,
-  "report_name": "Bill of Entry Summary",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Bill of Entry Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Purchase User"
-   },
-   {
-    "parent": "Bill of Entry Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "Bill of Entry Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "Bill of Entry Summary",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Auditor"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-06-05 14:48:26.693826",
-  "module": "GST India",
-  "name": "GST Balance",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "GL Entry",
-  "reference_report": null,
-  "report_name": "GST Balance",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GST Balance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "GST Balance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "GST Balance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Auditor"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
   "json": "{}",
   "letter_head": "LetterHead",
   "modified": "2023-06-27 16:40:32.493725",
@@ -3391,88 +3787,6 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-07-25 16:35:23.470355",
-  "module": "Audit Trail",
-  "name": "Audit Trail",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Version",
-  "reference_report": null,
-  "report_name": "Audit Trail",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Audit Trail",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Audit Trail",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Administrator"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": "SMC - New",
-  "modified": "2023-07-17 17:06:02.333972",
-  "module": "GST India",
-  "name": "GSTR-3B Details",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Purchase Invoice",
-  "reference_report": null,
-  "report_name": "GSTR-3B Details",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GSTR-3B Details",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "GSTR-3B Details",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "GSTR-3B Details",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Auditor"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
   "modified": "2023-08-02 17:30:29.494907",
   "module": "Accounts",
   "name": "General and Payment Ledger Comparison",
@@ -3589,44 +3903,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Employee"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": "{}",
-  "letter_head": null,
-  "modified": "2023-09-17 16:44:32.575646",
-  "module": "GST India",
-  "name": "GST Advance Detail",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Payment Entry",
-  "reference_report": null,
-  "report_name": "GST Advance Detail",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GST Advance Detail",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "GST Advance Detail",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
    }
   ],
   "timeout": 0
@@ -3754,44 +4030,6 @@
   "filters": [],
   "is_standard": "Yes",
   "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2024-03-11 16:03:18.740603",
-  "module": "GST India",
-  "name": "GST Sales Register Beta",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Sales Invoice",
-  "reference_report": null,
-  "report_name": "GST Sales Register Beta",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GST Sales Register Beta",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "GST Sales Register Beta",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
   "json": "{}",
   "letter_head": "",
   "modified": "2024-04-23 17:18:19.779036",
@@ -3859,74 +4097,6 @@
   "timeout": 0
  },
  {
-  "add_total_row": 1,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2024-08-19 14:40:33.093455",
-  "module": "GST India",
-  "name": "GST Job Work Stock Movement",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Subcontracting Order",
-  "reference_report": null,
-  "report_name": "GST Job Work Stock Movement",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Item Manager"
-   },
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   },
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing Manager"
-   },
-   {
-    "parent": "GST Job Work Stock Movement",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   }
-  ],
-  "timeout": 0
- },
- {
   "add_total_row": 0,
   "add_translate_data": 0,
   "columns": [],
@@ -3982,50 +4152,6 @@
    }
   ],
   "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": "{}",
-  "letter_head": null,
-  "modified": "2025-01-29 13:02:30.885362",
-  "module": "GST India",
-  "name": "GSTIN Status",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "GSTIN",
-  "reference_report": null,
-  "report_name": "GSTIN Status",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "GSTIN Status",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "GSTIN Status",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "GSTIN Status",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   }
-  ],
-  "timeout": 1500
  },
  {
   "add_total_row": 0,
@@ -4109,38 +4235,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Maintenance User"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2025-02-11 12:17:30.611180",
-  "module": "GST India",
-  "name": "India Compliance API Usage",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Integration Request",
-  "reference_report": null,
-  "report_name": "India Compliance API Usage",
-  "report_script": null,
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "India Compliance API Usage",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
    }
   ],
   "timeout": 0
@@ -5559,90 +5653,45 @@
   "timeout": 0
  },
  {
-  "add_total_row": 0,
+  "add_total_row": 1,
   "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
-  "letter_head": null,
-  "modified": "2025-04-22 14:35:14.045305",
-  "module": "Health Sil",
-  "name": "Pharmacy Bill Report",
+  "letter_head": "",
+  "modified": "2025-04-11 19:47:29.046936",
+  "module": "GST India",
+  "name": "HSN-wise-summary of inward supplies",
   "prepared_report": 0,
   "query": null,
-  "ref_doctype": "Pharmacy Billing",
+  "ref_doctype": "Purchase Invoice",
   "reference_report": null,
-  "report_name": "Pharmacy Bill Report",
+  "report_name": "HSN-wise-summary of inward supplies",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
-    "parent": "Pharmacy Bill Report",
+    "parent": "HSN-wise-summary of inward supplies",
     "parentfield": "roles",
     "parenttype": "Report",
-    "role": "System Manager"
-   }
-  ],
-  "timeout": 0
- },
- {
-  "add_total_row": 0,
-  "add_translate_data": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": null,
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Clinical Procedure Bill Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
+    "role": "Accounts User"
    },
    {
-    "default": null,
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Clinical Procedure Bill Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2025-04-24 16:54:52.144260",
-  "module": "Health Sil",
-  "name": "Clinical Procedure Bill Report",
-  "prepared_report": 0,
-  "query": "WITH bill_data AS (\n    SELECT\n        lb.name AS bill_name,\n        lb.patient_name,\n        lb.healthcare_practitioner,\n        lb.department,\n        lb.custom_mode_of_payment,\n        lb.total_amount,\n        lb.saved_amount,\n        lb.date_and_time,\n        lb.creation,\n        li.item_name,\n        li.rate,\n        li.idx,\n        ROW_NUMBER() OVER (PARTITION BY lb.name ORDER BY li.idx) AS row_number\n    FROM `tabClinical Procedure Bill` lb\n    LEFT JOIN `tabNursing Items` li ON li.parent = lb.name\n    WHERE \n        lb.creation BETWEEN %(from_date)s AND %(to_date)s\n        AND lb.docstatus = 1\n),\nformatted_items AS (\n    SELECT\n        CASE WHEN row_number = 1 THEN bill_data.patient_name ELSE '' END AS Patient,\n        bill_data.bill_name AS Bill_Name,\n        CASE WHEN row_number = 1 THEN hp.practitioner_name ELSE '' END AS Practitioner,\n        CASE WHEN row_number = 1 THEN bill_data.department ELSE '' END AS Department,\n        CASE WHEN row_number = 1 THEN bill_data.custom_mode_of_payment ELSE '' END AS `Mode of Payment`,\n        bill_data.item_name AS `Test Name`,\n        bill_data.rate AS `Rate`,\n        NULL AS `Amount_of_Discount`,\n        NULL AS `Total_Amount`,\n        bill_data.bill_name AS group_key,\n        bill_data.date_and_time,\n        1 AS row_type,\n        row_number\n    FROM bill_data\n    LEFT JOIN `tabHealthcare Practitioner` hp ON hp.name = bill_data.healthcare_practitioner\n),\nsummary_rows AS (\n    SELECT\n        'Total' AS Patient,\n        '' AS Bill_Name,\n        '' AS Practitioner,\n        '' AS Department,\n        '' AS `Mode of Payment`,\n        '' AS `Test Name`,\n        NULL AS `Rate`,\n        MAX(saved_amount) AS `Amount_of_Discount`,\n        MAX(total_amount) AS `Total_Amount`,\n        bill_name AS group_key,\n        MAX(date_and_time) AS date_and_time,\n        2 AS row_type,\n        999 AS row_number\n    FROM bill_data\n    GROUP BY bill_name\n)\n\nSELECT\n    Patient,\n    Bill_Name,\n    Practitioner,\n    Department,\n    `Mode of Payment`,\n    `Test Name`,\n    `Rate`,\n    `Amount_of_Discount`,\n    `Total_Amount`\nFROM (\n    SELECT * FROM formatted_items\n    UNION ALL\n    SELECT * FROM summary_rows\n) AS final_data\nORDER BY date_and_time DESC, group_key, row_type, row_number\n",
-  "ref_doctype": "Clinical Procedure Bill",
-  "reference_report": null,
-  "report_name": "Clinical Procedure Bill Report",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Clinical Procedure Bill Report",
+    "parent": "HSN-wise-summary of inward supplies",
     "parentfield": "roles",
     "parenttype": "Report",
-    "role": "System Manager"
+    "role": "Auditor"
+   },
+   {
+    "parent": "HSN-wise-summary of inward supplies",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
    }
   ],
   "timeout": 0
@@ -10122,6 +10171,95 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Auditor"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": null,
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Clinical Procedure Bill Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Clinical Procedure Bill Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2025-04-24 16:54:52.144260",
+  "module": "Health Sil",
+  "name": "Clinical Procedure Bill Report",
+  "prepared_report": 0,
+  "query": "WITH bill_data AS (\n    SELECT\n        lb.name AS bill_name,\n        lb.patient_name,\n        lb.healthcare_practitioner,\n        lb.department,\n        lb.custom_mode_of_payment,\n        lb.total_amount,\n        lb.saved_amount,\n        lb.date_and_time,\n        lb.creation,\n        li.item_name,\n        li.rate,\n        li.idx,\n        ROW_NUMBER() OVER (PARTITION BY lb.name ORDER BY li.idx) AS row_number\n    FROM `tabClinical Procedure Bill` lb\n    LEFT JOIN `tabNursing Items` li ON li.parent = lb.name\n    WHERE \n        lb.creation BETWEEN %(from_date)s AND %(to_date)s\n        AND lb.docstatus = 1\n),\nformatted_items AS (\n    SELECT\n        CASE WHEN row_number = 1 THEN bill_data.patient_name ELSE '' END AS Patient,\n        bill_data.bill_name AS Bill_Name,\n        CASE WHEN row_number = 1 THEN hp.practitioner_name ELSE '' END AS Practitioner,\n        CASE WHEN row_number = 1 THEN bill_data.department ELSE '' END AS Department,\n        CASE WHEN row_number = 1 THEN bill_data.custom_mode_of_payment ELSE '' END AS `Mode of Payment`,\n        bill_data.item_name AS `Test Name`,\n        bill_data.rate AS `Rate`,\n        NULL AS `Amount_of_Discount`,\n        NULL AS `Total_Amount`,\n        bill_data.bill_name AS group_key,\n        bill_data.date_and_time,\n        1 AS row_type,\n        row_number\n    FROM bill_data\n    LEFT JOIN `tabHealthcare Practitioner` hp ON hp.name = bill_data.healthcare_practitioner\n),\nsummary_rows AS (\n    SELECT\n        'Total' AS Patient,\n        '' AS Bill_Name,\n        '' AS Practitioner,\n        '' AS Department,\n        '' AS `Mode of Payment`,\n        '' AS `Test Name`,\n        NULL AS `Rate`,\n        MAX(saved_amount) AS `Amount_of_Discount`,\n        MAX(total_amount) AS `Total_Amount`,\n        bill_name AS group_key,\n        MAX(date_and_time) AS date_and_time,\n        2 AS row_type,\n        999 AS row_number\n    FROM bill_data\n    GROUP BY bill_name\n)\n\nSELECT\n    Patient,\n    Bill_Name,\n    Practitioner,\n    Department,\n    `Mode of Payment`,\n    `Test Name`,\n    `Rate`,\n    `Amount_of_Discount`,\n    `Total_Amount`\nFROM (\n    SELECT * FROM formatted_items\n    UNION ALL\n    SELECT * FROM summary_rows\n) AS final_data\nORDER BY date_and_time DESC, group_key, row_type, row_number\n",
+  "ref_doctype": "Clinical Procedure Bill",
+  "reference_report": null,
+  "report_name": "Clinical Procedure Bill Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Clinical Procedure Bill Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2025-04-22 14:35:14.045305",
+  "module": "Health Sil",
+  "name": "Pharmacy Bill Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Pharmacy Billing",
+  "reference_report": null,
+  "report_name": "Pharmacy Bill Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Pharmacy Bill Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
    }
   ],
   "timeout": 0
