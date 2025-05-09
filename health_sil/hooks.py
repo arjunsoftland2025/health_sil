@@ -315,6 +315,9 @@ fixtures = [
     #  {"dt": "Dashboard",
     #     "filters": [["is_standard", "=", "0"]],
     #     "ignore_version": 1},
-    # {"dt": "Dashboard Chart"},
+    {
+        "dt": "Dashboard Chart",
+        "filters": [["document_type", "=", "Patient Encounter"]]
+    },
     # {"dt": "User Permission"}
 ]
