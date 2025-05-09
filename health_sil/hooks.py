@@ -153,6 +153,12 @@ doc_events = {
         "after_insert": [
             "health_sil.services.batch_api.create_batch_from_item",
             "health_sil.services.price_list_api.add_price_list_from_item",
+        ],
+        "on_update": "health_sil.services.price_list_api.update_price_list_from_item",  # This will run on save or update
+    },
+    "Purchase Invoice": {
+        "on_submit": [
+            "health_sil.services.items.update_item_valuation_rate_on_submit"
         ]
     }
 }
@@ -178,6 +184,27 @@ doc_events = {
 # 		"health_sil.tasks.monthly"
 # 	],
 # }
+
+# scheduler_events = {
+#     "weekly": [
+#         "health_sil.tasks.clear_token_history"
+#     ],
+# }
+
+# scheduler_events = {
+#     "daily": [
+#         "health_sil.tasks.clear_token_history"
+#     ]
+# }
+
+
+scheduler_events = {
+    "cron": {
+        "59 23 * * *": [
+            "health_sil.tasks.clear_token_history"
+        ]
+    }
+}
 
 # Testing
 # -------

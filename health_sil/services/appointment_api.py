@@ -16,7 +16,6 @@ def manage_token(practitioner_name):
 
     if not token_entry:
         # If no entry exists for today, create a new one with token series "doctor_name-"
-        # new_token_series = practitioner_name.lower()  # Token series is based on doctor's name
         new_token_series = doctor.custom_token_series.upper() 
         new_token_number = 1
         new_token = f"{new_token_series}-{new_token_number}"

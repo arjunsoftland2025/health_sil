@@ -5,14 +5,14 @@ from frappe.utils import nowdate, flt
 
 
 @frappe.whitelist()
-def create_sales_invoice(patient, patient_name, doctor=None, items=None, mode_of_payment=None, price_list=None):
+def create_sales_invoice(patient, patient_name, doctor=None, items=None, mode_of_payment=None, price_list=None, discount_amount_cash=None, discount_amount_percentage=None):
     """
     Creates a Sales Invoice and auto-generates Payment Entry
     """
     try:
         customer = get_validated_customer(patient_name)
         # Create and process Sales Invoice
-        invoice = create_and_submit_invoice(customer, patient, patient_name, doctor, items, price_list)
+        invoice = create_and_submit_invoice(customer, patient, patient_name, doctor, items, price_list, discount_amount_cash, discount_amount_percentage)
         # Process payment if required
         process_payment(invoice, mode_of_payment) if mode_of_payment else None
         return invoice
@@ -36,11 +36,17 @@ def get_validated_customer(patient_name):
     
     return customer
 
-def create_and_submit_invoice(customer, patient, patient_name, doctor, items, price_list):
-    """Create and submit Sales Invoice with optimized validations"""
-    a = 1
+def create_and_submit_invoice(customer, patient, patient_name, doctor, items, price_list, discount_amount_cash, discount_amount_percentage):
     items = json.loads(items)
     invoice = frappe.new_doc("Sales Invoice")
+    
+    prepared_items = [validate_and_prepare_item(row) for row in items]
+    contains_medications = any(
+        frappe.get_cached_value("Item", row["item_code"], "item_group") == "Medications"
+        for row in prepared_items
+    )
+    
+
     invoice.update({
         "customer": customer,
         "patient": patient,
@@ -48,28 +54,64 @@ def create_and_submit_invoice(customer, patient, patient_name, doctor, items, pr
         "ref_practitioner": doctor,
         "selling_price_list": price_list,
         "due_date": nowdate(),
-        "update_stock": a,
-        "items": [validate_and_prepare_item(row) for row in items]
+        "update_stock": 1 if contains_medications else 0,
+        "items": prepared_items,
+        "taxes_and_charges": "General Mixed - S",
+        "discount_amount" : flt(discount_amount_cash or 0),
+        "additional_discount_percentage" : flt(discount_amount_percentage or 0),
     })
-    
+
+    # invoice.set_missing_values()
+    # invoice.calculate_taxes_and_totals()
+
     invoice.insert(ignore_permissions=True)
     invoice.submit()
     return invoice
 
-
 def validate_and_prepare_item(item):
     """Validate individual item and prepare for insertion"""
-    if (qty := flt(item.get("qty", 1))) <= 0:
-        frappe.throw(_("Invalid quantity for item {0}").format(item.get("item_code")))
-    
-    if (rate := flt(item.get("rate", 0))) < 0:
-        frappe.throw(_("Negative rate for item {0}").format(item.get("item_code")))
-    
+    item_code = item.get("item_code")
+    qty = flt(item.get("qty", 1))
+    rate = flt(item.get("rate", 0))
+    batch_no = item.get("batch_no")
+
+    if qty <= 0:
+        frappe.throw(_("Invalid quantity for item {0}").format(item_code))
+    if rate < 0:
+        frappe.throw(_("Negative rate for item {0}").format(item_code))
+
+    item_group = frappe.get_cached_value("Item", item_code, "item_group")
+    warehouse = None
+
+    if item_group == "Medications" and batch_no:
+        warehouse = get_warehouse_for_batch(item_code, batch_no)
+        if not warehouse:
+            frappe.throw(_("No warehouse found with stock for item {0} and batch {1}").format(item_code, batch_no))
+
     return {
-        "item_code": item.get("item_code"),
+        "item_code": item_code,
         "qty": qty,
-        "rate": rate
+        "rate": rate,
+        "batch_no": batch_no if item_group == "Medications" else "",
+        "warehouse": warehouse if item_group == "Medications" else None
     }
+
+def get_warehouse_for_batch(item_code, batch_no):
+    """Get the warehouse holding the given batch of an item"""
+    result = frappe.db.sql("""
+        SELECT sle.warehouse as warehouse, SUM(sle.actual_qty) AS actual_qty
+        FROM `tabStock Ledger Entry` sle
+        WHERE sle.item_code = %s AND sle.batch_no = %s
+        GROUP BY sle.warehouse
+        HAVING actual_qty
+        ORDER BY actual_qty DESC
+        LIMIT 1
+    """, (item_code, batch_no), as_dict=True)
+
+    if  result:
+        return result[0]["warehouse"]
+    else:
+        frappe.throw(_("No warehouse found with stock for item {0} and batch {1}").format(item_code, batch_no))
 
 def process_payment(invoice, mode_of_payment):
     """Handle payment processing"""

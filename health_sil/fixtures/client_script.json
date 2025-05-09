@@ -2,6 +2,28 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Purchase Invoice",
+  "enabled": 1,
+  "modified": "2025-05-05 11:04:57.875528",
+  "module": "Health Sil",
+  "name": "Purchase Invoice rate",
+  "script": "frappe.ui.form.on('Purchase Invoice Item', {\n    item_code(frm, cdt, cdn) {\n        let row = locals[cdt][cdn];\n        if (row.item_code) {\n            frappe.db.get_value('Item', row.item_code, 'valuation_rate')\n                .then(r => {\n                    if (r && r.message && r.message.valuation_rate != null) {\n                        frappe.model.set_value(cdt, cdn, 'custom_valuation_rate', r.message.valuation_rate);\n                    }\n                });\n        }\n    }\n});\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Purchase Invoice",
+  "enabled": 1,
+  "modified": "2025-05-09 16:40:13.311570",
+  "module": "Health Sil",
+  "name": "Add free in Purchase Inv",
+  "script": "frappe.ui.form.on('Purchase Invoice', {\n    on_submit: function(frm) {\n        // Ensure the document is submitted\n        if (frm.doc.docstatus === 1) {\n            // Freeze the screen with a message\n            frappe.dom.freeze(__(\"Creating Stock Entries...\"));\n\n            // Call the server-side method to create stock entries\n            frappe.call({\n                method: 'health_sil.services.purchase_invoice.create_stock_entry_from_purchase_invoice',\n                args: {\n                    purchase_invoice: frm.doc.name\n                },\n                callback: function(response) {\n                    // Unfreeze the screen\n                    frappe.dom.unfreeze();\n\n                    if (response.message) {\n                        frappe.msgprint({\n                            title: __('Success'),\n                            message: __('Stock Entries Created Successfully'),\n                            indicator: 'green'\n                        });\n                    }\n                },\n                error: function(err) {\n                    // Unfreeze the screen on error\n                    frappe.dom.unfreeze();\n                    frappe.msgprint({\n                        title: __('Error'),\n                        message: __('An error occurred while creating Stock Entries: {0}', [err.message]),\n                        indicator: 'red'\n                    });\n                }\n            });\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Patient",
   "enabled": 0,
   "modified": "2025-04-08 16:34:40.145000",

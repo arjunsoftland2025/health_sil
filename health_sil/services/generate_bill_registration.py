@@ -5,13 +5,24 @@ from frappe.utils import nowdate, flt,cint, getdate
 from frappe.model.document import Document
 from frappe import json
 
+
 @frappe.whitelist()
-def create_sales_invoice(patient, patient_name, doctor=None, items=None, mode_of_payment=None, encounter_token=None):
+def create_registration_only(patient, patient_name, items=None, mode_of_payment=None):
     """
-    Creates a Sales Invoice for a Patient with optimizations and auto-generates Payment Entry + Patient Encounter.
+    Creates a Sales Invoice for a Patient with optimizations and auto-generates Payment Entry
     """
+    if frappe.db.get_value("Patient", patient, "custom_is_registered"):
+        frappe.throw("Patient already registered")
+
+    if isinstance(items, str):
+        items = json.loads(items)
+    
+    registration_items = [item for item in items if item["item_code"] == "Registration Fee"]
+    if not registration_items:
+        frappe.throw("Registration must include Registration Fee item")
+
     try:
-        # Validate inputs upfront
+        # Validate inputs f
         validate_mandatory(patient, items)
         
         # Convert items to list if string
@@ -24,19 +35,13 @@ def create_sales_invoice(patient, patient_name, doctor=None, items=None, mode_of
         customer = get_validated_customer(patient)
         update_patient_registration_details(patient)
         
-        
         # Create and process Sales Invoice
-        invoice = create_and_submit_invoice(patient, patient_name, customer, doctor, items)
+        invoice = create_and_submit_invoice_only(patient, patient_name, customer, items)
         
         # Process payment if required
         payment_entry = process_payment(invoice, mode_of_payment) if mode_of_payment else None
         
-        # Create patient encounter
-        if invoice:
-            encounter = create_patient_encounter(patient, doctor, invoice.company, encounter_token)
-        
-        
-        return build_response(invoice, encounter)
+        return build_response(invoice)
 
     except Exception as e:
         handle_errors(e)
@@ -81,14 +86,13 @@ def get_validated_customer(patient):
     
     return customer
 
-def create_and_submit_invoice(patient, patient_name, customer, doctor, items):
+def create_and_submit_invoice_only(patient, patient_name, customer, items):
     """Create and submit Sales Invoice with optimized validations"""
     invoice = frappe.new_doc("Sales Invoice")
     invoice.update({
         "customer": customer,
         "patient": patient,
         "patient_name": patient_name,
-        "ref_practitioner": doctor,
         "due_date": nowdate(),
         "items": [validate_and_prepare_item(row) for row in items]
     })
@@ -98,18 +102,29 @@ def create_and_submit_invoice(patient, patient_name, customer, doctor, items):
     return invoice
 
 def update_patient_registration_details(patient):
-    """Update patient's registration status and consultation renewal date"""
-    patient_doc = frappe.get_doc("Patient", patient)
-    patient_doc.reload()
-    changed = False
+    try:
+        frappe.db.begin()
+        
+        # Lock the document for update
+        patient_doc = frappe.get_doc("Patient", patient)
+        patient_doc = frappe.get_doc("Patient", patient_doc.name).as_dict()
+        patient_doc = frappe.get_doc("Patient", patient_doc.name, for_update=True)
 
-    # Update registration status if not already registered
-    if cint(patient_doc.custom_is_registered) == 0:
-        patient_doc.custom_is_registered = 1
-        changed = True
+        changed = False
 
-    if changed:
-        patient_doc.save(ignore_permissions=True)
+        if cint(patient_doc.custom_is_registered) == 0:
+            patient_doc.custom_is_registered = 1
+            changed = True
+
+        if changed:
+            patient_doc.save(ignore_permissions=True)
+        
+        frappe.db.commit()
+
+    except Exception as e:
+        frappe.db.rollback()
+        frappe.log_error(f"Error updating registration for patient {patient}: {str(e)}")
+        raise
 
 def validate_and_prepare_item(item):
     """Validate individual item and prepare for insertion"""
@@ -175,30 +190,11 @@ def get_payment_account(mode, company):
     return frappe.get_cached_value("Mode of Payment Account", 
         {"parent": mode, "company": company}, "default_account")
 
-@frappe.whitelist()
-def create_patient_encounter(patient, doctor, company, encounter_token):
-    """Optimized patient encounter creation"""
-    if not doctor:  # Skip if no doctor specified
-        return None
 
-    encounter = frappe.new_doc("Patient Encounter")
-    encounter.update({
-        "patient": patient,
-        "practitioner": doctor,
-        "encounter_date": nowdate(),
-        "company": company,
-        "encounter_type": "Outpatient",
-        "custom_encounter_token": encounter_token
-    })
-    
-    encounter.insert(ignore_permissions=True)
-    return encounter.name
-
-def build_response(invoice, encounter):
+def build_response(invoice):
     """Standardized response format"""
     return {
         "sales_invoice": invoice.name,
-        "patient_encounter": encounter,
         "total_amount": invoice.grand_total,
         "outstanding_amount": invoice.outstanding_amount
     }

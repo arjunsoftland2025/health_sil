@@ -1,6 +1,5 @@
 import frappe
 from frappe.utils import nowdate, add_days, get_datetime_str
-import json
 
 @frappe.whitelist()
 def update_consultation_validity(patient, doctor):

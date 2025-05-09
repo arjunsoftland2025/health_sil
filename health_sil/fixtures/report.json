@@ -1,5 +1,161 @@
 [
  {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": null,
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Patient by date",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Patient by date",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2025-04-22 09:45:10.626303",
+  "module": "Health Sil",
+  "name": "Patient by date",
+  "prepared_report": 0,
+  "query": "SELECT\n    patient_name AS Patient, territory, uid, custom_address_line AS Address, custom_city AS City, mobile\nFROM\n    `tabPatient`\nWHERE\n    creation >= %(from_date)s AND creation<= %(to_date)s\n",
+  "ref_doctype": "Patient",
+  "reference_report": null,
+  "report_name": "Patient by date",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Patient by date",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Patient by date",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Physician"
+   },
+   {
+    "parent": "Patient by date",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Laboratory User"
+   },
+   {
+    "parent": "Patient by date",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Nursing User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": null,
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "from_date",
+    "mandatory": 0,
+    "options": null,
+    "parent": "Sales Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "to_date",
+    "mandatory": 0,
+    "options": null,
+    "parent": "Sales Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "customer",
+    "fieldtype": "Link",
+    "label": "customer",
+    "mandatory": 0,
+    "options": null,
+    "parent": "Sales Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": "frappe.query_reports[\"Custom Sales Trends\"] = {\n    onload: function(report) {\n        report.page.set_title(\"Custom Sales Trends 📊\");\n    }\n};\n",
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2025-05-06 16:22:27.129816",
+  "module": "Accounts",
+  "name": "Sales Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Sales Invoice",
+  "reference_report": null,
+  "report_name": "Sales Report",
+  "report_script": "# custom_sales_trends.py\n\nimport frappe\nfrom frappe.utils import getdate, formatdate\nfrom collections import defaultdict\n\ndef execute(filters=None):\n    if not filters:\n        filters = {}\n\n    conditions = \"1=1\"\n    if filters.get(\"customer\"):\n        conditions += f\" AND si.customer = %(customer)s\"\n    if filters.get(\"from_date\"):\n        conditions += \" AND si.posting_date >= %(from_date)s\"\n    if filters.get(\"to_date\"):\n        conditions += \" AND si.posting_date <= %(to_date)s\"\n\n    data = frappe.db.sql(f\"\"\"\n        SELECT\n            DATE_FORMAT(si.posting_date, '%%Y-%%m') as month,\n            SUM(si.base_net_total) as net_total,\n            SUM(si.base_grand_total) as grand_total\n        FROM `tabSales Invoice` si\n        WHERE si.docstatus = 1 AND {conditions}\n        GROUP BY month\n        ORDER BY month ASC\n    \"\"\", filters, as_dict=True)\n\n    columns = [\n        {\"label\": \"Month\", \"fieldname\": \"month\", \"fieldtype\": \"Data\", \"width\": 120},\n        {\"label\": \"Net Total\", \"fieldname\": \"net_total\", \"fieldtype\": \"Currency\", \"width\": 150},\n        {\"label\": \"Grand Total\", \"fieldname\": \"grand_total\", \"fieldtype\": \"Currency\", \"width\": 150},\n    ]\n\n    return columns, data\n",
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Sales Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Sales Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Sales Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ],
+  "timeout": 0
+ },
+ {
   "add_total_row": 1,
   "add_translate_data": 0,
   "columns": [],
