@@ -1,5 +1,4 @@
 import frappe
-import frappe.utils
 
 def reset_all_tokens():
     """
