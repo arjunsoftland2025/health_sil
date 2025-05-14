@@ -56,12 +56,12 @@ def create_and_submit_invoice(customer, patient, patient_name, doctor, items, pr
         "due_date": nowdate(),
         "update_stock": 1 if contains_medications else 0,
         "items": prepared_items,
-        "taxes_and_charges": "General Mixed - S",
+        "taxes_and_charges": frappe.db.get_value("Sales Taxes and Charges Template", {"is_default": 1}, "name"),
         "discount_amount" : flt(discount_amount_cash or 0),
         "additional_discount_percentage" : flt(discount_amount_percentage or 0),
     })
 
-    # invoice.set_missing_values()
+    invoice.set_missing_values()
     # invoice.calculate_taxes_and_totals()
 
     invoice.insert(ignore_permissions=True)

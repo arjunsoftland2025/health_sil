@@ -198,13 +198,13 @@ doc_events = {
 # }
 
 
-# scheduler_events = {
-#     "cron": {
-#         "59 23 * * *": [
-#             "health_sil.tasks.clear_token_history"
-#         ]
-#     }
-# }
+scheduler_events = {
+    "cron": {
+        "59 23 * * *": [
+            "health_sil.tasks.clear_token_history"
+        ]
+    }
+}
 
 # Testing
 # -------

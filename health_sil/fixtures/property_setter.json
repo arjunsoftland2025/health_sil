@@ -2881,22 +2881,6 @@
  },
  {
   "default_value": null,
-  "doc_type": "Patient",
-  "docstatus": 0,
-  "doctype": "Property Setter",
-  "doctype_or_field": "DocType",
-  "field_name": null,
-  "is_system_generated": 0,
-  "modified": "2025-04-23 10:39:28.106332",
-  "module": null,
-  "name": "Patient-main-field_order",
-  "property": "field_order",
-  "property_type": "Data",
-  "row_name": null,
-  "value": "[\"custom_consultation_valid_date\", \"basic_info\", \"mobile\", \"custom_is_whatsapp\", \"phone\", \"naming_series\", \"custom_is_registered\", \"first_name\", \"middle_name\", \"last_name\", \"patient_name\", \"custom_registration_period\", \"custom_free_consultation_period_\", \"custom_consultation_renewal_date\", \"custom_valid_till_\", \"image\", \"column_break_14\", \"status\", \"uid\", \"sex\", \"territory\", \"dob\", \"age_html\", \"blood_group\", \"inpatient_record\", \"inpatient_status\", \"report_preference\", \"email\", \"invite_user\", \"user_id\", \"custom_section_break_joajk\", \"custom_consultation_validity\", \"custom_address_details\", \"custom_address_line\", \"custom_pincode\", \"custom_column_break_b2e4v\", \"custom_city\", \"custom_country\", \"custom_state\", \"customer_details_section\", \"customer\", \"customer_group\", \"column_break_24\", \"default_currency\", \"default_price_list\", \"language\", \"more_info\", \"patient_details\", \"dashboard_tab\", \"address_and_contact_tab\", \"address_contacts\", \"address_html\", \"column_break_22\", \"contact_html\", \"sb_relation\", \"patient_relation\", \"medical_history_tab\", \"personal_and_social_history\", \"occupation\", \"column_break_25\", \"marital_status\", \"allergy_medical_and_surgical_history\", \"allergies\", \"medication\", \"column_break_20\", \"medical_history\", \"surgical_history\", \"risk_factors\", \"tobacco_past_use\", \"tobacco_current_use\", \"alcohol_past_use\", \"alcohol_current_use\", \"column_break_32\", \"surrounding_factors\", \"other_risk_factors\"]"
- },
- {
-  "default_value": null,
   "doc_type": "Sales Invoice",
   "docstatus": 0,
   "doctype": "Property Setter",
@@ -3726,5 +3710,21 @@
   "property_type": "Text",
   "row_name": null,
   "value": ""
+ },
+ {
+  "default_value": null,
+  "doc_type": "Patient",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocType",
+  "field_name": null,
+  "is_system_generated": 0,
+  "modified": "2025-05-14 10:17:29.985501",
+  "module": null,
+  "name": "Patient-main-field_order",
+  "property": "field_order",
+  "property_type": "Data",
+  "row_name": null,
+  "value": "[\"custom_consultation_valid_date\", \"basic_info\", \"mobile\", \"custom_is_whatsapp\", \"phone\", \"naming_series\", \"custom_is_registered\", \"first_name\", \"middle_name\", \"last_name\", \"patient_name\", \"custom_registration_period\", \"custom_free_consultation_period_\", \"custom_consultation_renewal_date\", \"custom_valid_till_\", \"image\", \"column_break_14\", \"status\", \"uid\", \"sex\", \"territory\", \"dob\", \"age_html\", \"blood_group\", \"inpatient_record\", \"inpatient_status\", \"report_preference\", \"email\", \"invite_user\", \"user_id\", \"custom_section_break_joajk\", \"custom_consultation_validity\", \"custom_address_details\", \"custom_address_line\", \"custom_pincode\", \"custom_column_break_b2e4v\", \"custom_city\", \"custom_country\", \"custom_state\", \"customer_details_section\", \"customer\", \"customer_group\", \"column_break_24\", \"default_currency\", \"default_price_list\", \"language\", \"more_info\", \"patient_details\", \"dashboard_tab\", \"address_and_contact_tab\", \"address_contacts\", \"address_html\", \"column_break_22\", \"contact_html\", \"sb_relation\", \"patient_relation\", \"medical_history_tab\", \"personal_and_social_history\", \"occupation\", \"column_break_25\", \"custom_refered_by\", \"custom_column_break_er5tg\", \"marital_status\", \"allergy_medical_and_surgical_history\", \"allergies\", \"medication\", \"column_break_20\", \"medical_history\", \"surgical_history\", \"risk_factors\", \"tobacco_past_use\", \"tobacco_current_use\", \"alcohol_past_use\", \"alcohol_current_use\", \"column_break_32\", \"surrounding_factors\", \"other_risk_factors\"]"
  }
 ]
