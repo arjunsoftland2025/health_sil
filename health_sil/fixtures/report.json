@@ -10389,26 +10389,51 @@
   "timeout": 0
  },
  {
-  "add_total_row": 0,
+  "add_total_row": 1,
   "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [],
+  "filters": [
+   {
+    "default": null,
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "from_date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Pharmacy Bill Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": null,
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "to_date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Pharmacy Bill Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
   "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2025-04-22 14:35:14.045305",
+  "modified": "2025-05-16 17:17:16.722125",
   "module": "Health Sil",
   "name": "Pharmacy Bill Report",
   "prepared_report": 0,
-  "query": null,
+  "query": "WITH pharmacy_data AS (\n    SELECT\n        pb.name AS bill_name,\n        pb.patient_name,\n        pb.healthcare_practitioner,\n        pb.department,\n        pb.custom_discount_mode,\n        pb.custom_amount_of_discount,\n        pb.custom_percentage_of_discount,\n        pb.total_amount,\n        pb.saved_amount,\n        pb.date_and_time,\n        pb.creation,\n        ph.item_name,\n        ph.qty,\n        ph.mrp,\n        ph.idx,\n        ROW_NUMBER() OVER (PARTITION BY pb.name ORDER BY ph.idx) AS row_number\n    FROM `tabPharmacy Billing` pb\n    LEFT JOIN `tabPharmaceuticals` ph ON ph.parent = pb.name\n    WHERE \n        pb.creation BETWEEN %(from_date)s AND %(to_date)s\n        AND pb.docstatus = 1\n),\nformatted_items AS (\n    SELECT\n        CASE WHEN row_number = 1 THEN pharmacy_data.patient_name ELSE '' END AS Patient,\n        pharmacy_data.bill_name AS Bill_Name,\n        CASE WHEN row_number = 1 THEN hp.practitioner_name ELSE '' END AS Practitioner,\n        CASE WHEN row_number = 1 THEN pharmacy_data.department ELSE '' END AS Department,\n        CASE WHEN row_number = 1 THEN pharmacy_data.custom_discount_mode ELSE '' END AS `Discount Mode`,\n        pharmacy_data.item_name AS `Medicine Name`,\n        pharmacy_data.qty AS Quantity,\n        pharmacy_data.mrp AS MRP,\n        CASE WHEN row_number = 1 THEN pharmacy_data.total_amount ELSE NULL END AS `Total Amount`,\n        pharmacy_data.bill_name AS group_key,\n        pharmacy_data.date_and_time,\n        1 AS row_type,\n        row_number\n    FROM pharmacy_data\n    LEFT JOIN `tabHealthcare Practitioner` hp ON hp.name = pharmacy_data.healthcare_practitioner\n),\nsummary_rows AS (\n    SELECT\n        'Total' AS Patient,\n        '' AS Bill_Name,\n        '' AS Practitioner,\n        '' AS Department,\n        '' AS `Discount Mode`,\n        '' AS `Medicine Name`,\n        NULL AS Quantity,\n        NULL AS MRP,\n        MAX(total_amount) AS `Total Amount`,\n        bill_name AS group_key,\n        MAX(date_and_time) AS date_and_time,\n        2 AS row_type,\n        999 AS row_number\n    FROM pharmacy_data\n    GROUP BY bill_name\n),\ngrand_total_row AS (\n    SELECT\n        CONCAT('Grand Total (', COUNT(DISTINCT patient_name), ' Patients)') AS Patient,\n        '' AS Bill_Name,\n        '' AS Practitioner,\n        '' AS Department,\n        '' AS `Discount Mode`,\n        '' AS `Medicine Name`,\n        NULL AS Quantity,\n        NULL AS MRP,\n        SUM(total_amount) AS `Total Amount`,\n        NULL AS group_key,\n        NULL AS date_and_time,\n        3 AS row_type,\n        1000 AS row_number\n    FROM pharmacy_data\n)\n\nSELECT\n    Patient,\n    Bill_Name,\n    Practitioner,\n    Department,\n    `Discount Mode`,\n    `Medicine Name`,\n    Quantity,\n    MRP,\n    `Total Amount`\nFROM (\n    SELECT * FROM formatted_items\n    UNION ALL\n    SELECT * FROM summary_rows\n    UNION ALL\n    SELECT * FROM grand_total_row\n) AS final_data\nORDER BY \n    COALESCE(date_and_time, NOW()) DESC,\n    group_key,\n    row_type,\n    row_number;\n",
   "ref_doctype": "Pharmacy Billing",
   "reference_report": null,
   "report_name": "Pharmacy Bill Report",
-  "report_script": null,
+  "report_script": "if (row.Patient && row.Patient.startsWith('Grand Total')) {\n    row.bold = true;\n}\n",
   "report_type": "Query Report",
   "roles": [
    {
