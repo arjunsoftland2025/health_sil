@@ -46,3 +46,18 @@ def create_batch_from_item(doc, method):
             message=f"Item {doc.name}: {str(e)}"
         )
         raise  # Optionally re-raise the exception to alert upstream processes
+
+@frappe.whitelist()
+def notify_batches_due_today():
+    from frappe.utils import nowdate
+    today = nowdate()
+    batches = frappe.get_all("Batch", filters={
+        "next_reminder_date": today
+    }, fields=["name", "item", "expiry_date"])
+
+    for batch in batches:
+        frappe.publish_realtime(
+            event='msgprint',
+            message=f"Reminder: Batch <b>{batch.name}</b> for Item <b>{batch.item}</b> expires on {batch.expiry_date}!",
+        )
+

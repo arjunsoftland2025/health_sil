@@ -101,12 +101,17 @@ def get_warehouse_for_batch(item_code, batch_no):
     result = frappe.db.sql("""
         SELECT sle.warehouse as warehouse, SUM(sle.actual_qty) AS actual_qty
         FROM `tabStock Ledger Entry` sle
-        WHERE sle.item_code = %s AND sle.batch_no = %s
+        WHERE sle.item_code = %s
+        AND EXISTS (
+            SELECT 1 FROM `tabBatch` sbb
+            WHERE sbb.batch_id = %s
+        )
         GROUP BY sle.warehouse
-        HAVING actual_qty
+        HAVING actual_qty > 0
         ORDER BY actual_qty DESC
         LIMIT 1
     """, (item_code, batch_no), as_dict=True)
+
 
     if  result:
         return result[0]["warehouse"]

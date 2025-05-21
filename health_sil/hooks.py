@@ -201,7 +201,8 @@ doc_events = {
 scheduler_events = {
     "cron": {
         "59 23 * * *": [
-            "health_sil.tasks.clear_token_history"
+            "health_sil.tasks.clear_token_history",
+            "health_sil.services.batch_api.notify_batches_due_today"
         ]
     }
 }
