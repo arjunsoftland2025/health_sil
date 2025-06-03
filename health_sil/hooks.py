@@ -162,6 +162,9 @@ doc_events = {
         "on_submit": [
             "health_sil.services.items.update_item_valuation_rate_on_submit"
         ]
+    },
+    "Laboratory Bill": {
+        "on_submit": "health_sil.services.laboratory_bill.create_lab_tests_for_bill"
     }
 }
 

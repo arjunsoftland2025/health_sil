@@ -39,3 +39,20 @@ def manage_token(practitioner_name):
         frappe.log_error(f"Error generating token for doctor {practitioner_name}: {e}")
         return None
 
+
+@frappe.whitelist()
+def check_last_encounter(patient):
+    last_encounter = frappe.db.get_value(
+        "Patient Encounter",
+        {"patient": patient},
+        ["name", "practitioner"],
+        order_by="creation desc"
+    )
+    if last_encounter:
+        return {
+            "has_encounter": True,
+            "encounter": last_encounter[0],
+            "doctor": last_encounter[1]
+        }
+    else:
+        return { "has_encounter": False }
