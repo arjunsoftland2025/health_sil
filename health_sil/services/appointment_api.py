@@ -30,7 +30,7 @@ def manage_token(practitioner_name):
             # Update the last token number in the token entry
             token_entry.last_token = last_token
 
-        doctor.save(ignore_permissions=True)
+        
         frappe.db.commit()
 
         return new_token
