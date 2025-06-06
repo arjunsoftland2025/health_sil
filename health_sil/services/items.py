@@ -16,3 +16,18 @@ def update_item_valuation_rate_on_submit(doc, method):
                 # Log any errors that occur
                 frappe.log_error(frappe.get_traceback(), "Valuation Rate Update Error")
 
+        # Check if the custom mrp is set
+        if item.custom_mrp is not None:
+            try:
+                # Fetch the item record
+                item_doc = frappe.get_doc("Item", item.item_code)
+                # Update the custom mrp as for nos of items by dividing with conversion factor
+                new_mrp = item.custom_mrp / ( item.conversion_factor if item.conversion_factor else 1 ) # ( item.custom_mrp / item.conversion_factor 1 )
+                # Update the custom mrp field with the value from the custom field
+                item_doc.custom_mrp = new_mrp
+                item_doc.save(ignore_permissions=True)  # Save the changes
+                frappe.db.commit()  # Commit the transaction
+            except Exception as e:
+                # Log any errors that occur
+                frappe.log_error(frappe.get_traceback(), " Custom mrp Update Error")
+
