@@ -52,7 +52,7 @@ def create_and_submit_invoice(customer, patient, patient_name, doctor, items, pr
         "patient": patient,
         "patient_name": patient_name,
         "ref_practitioner": doctor,
-        "selling_price_list": price_list,
+        "selling_price_list": price_list or "Standard Selling",
         "due_date": nowdate(),
         "update_stock": 1 if contains_medications else 0,
         "items": prepared_items,

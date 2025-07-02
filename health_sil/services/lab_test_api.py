@@ -39,7 +39,8 @@ def get_lab_test_result_fields(lab_test_id):
     for row in lab_test.normal_test_items:
         rows.append({
             "name": row.name,
-            "lab_test_name": row.lab_test_name,
+            "lab_test_name": row.lab_test_name or "",
+            "event_name": row.lab_test_event or "",
             "uom": row.lab_test_uom,
             "normal_range": row.normal_range,
             "result_value": row.result_value or ""
